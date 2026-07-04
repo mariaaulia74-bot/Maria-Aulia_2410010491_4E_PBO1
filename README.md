@@ -3,7 +3,7 @@
 ## Profil
 * **Nama:** Maria Aulia
 * **NPM:** 2410010491
-* **Kelas:** 4E
+* **Kelas:** 4E REG BJM
 * **Mata Kuliah:** Pemrograman Berbasis Objek I
 
 ## Studi Kasus
