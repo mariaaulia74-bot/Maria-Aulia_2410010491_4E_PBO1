@@ -1,40 +1,206 @@
 # Proyek Akhir Pemrograman Berbasis Objek 1
 
-## Profil
-* **Nama:** Maria Aulia
-* **NPM:** 2410010491
-* **Kelas:** 4E REG BJM
-* **Mata Kuliah:** Pemrograman Berbasis Objek I
+Proyek ini adalah aplikasi Sistem Manajemen Perpustakaan Digital menggunakan Java sebagai tugas akhir dari mata kuliah pemrograman berbasis objek 1.
 
-## Studi Kasus
-Aplikasi Sistem Manajemen Perpustakaan Digital interaktif berbasis teks (Console) yang mendukung pengelolaan data pustaka (Buku Fisik dan E-Book), manajemen data anggota (Mahasiswa dan Dosen), pencatatan proses peminjaman, serta perhitungan pengembalian buku beserta sistem denda keterlambatan secara otomatis.
+## Deskripsi
 
-## Tabel Penilaian Mandiri
+Aplikasi ini menerima input berupa data pustaka (buku fisik dan e-book), data anggota, dan transaksi peminjaman, lalu memberikan output berupa informasi status peminjaman, sisa stok buku, dan perhitungan denda keterlambatan.
 
-| No | Materi | Nilai Maksimal | Penilaian Mandiri | Keterangan / Nama Class & File |
-|---|---|---|---|---|
-| 1 | Class | 5 | 5 | Membuat class Main, Perpustakaan, Peminjaman, Denda, Anggota, Pustaka, BukuFisik, EBook |
-| 2 | Object | 5 | 5 | Instansiasi objek `new Perpustakaan()`, `new BukuFisik()`, `new EBook()`, dan `new Anggota()` pada Main.java |
-| 3 | Atribut | 5 | 5 | Atribut seperti id, nama, jenis pada Anggota.java; serta kode, judul, pengarang pada Pustaka.java |
-| 4 | Constructor | 5 | 5 | Terdapat constructor pada class-class model (Anggota, BukuFisik, EBook) untuk inisialisasi data objek |
-| 5 | Mutator | 5 | 5 | Method setter (misal: setStok, setLokasi) yang digunakan untuk memodifikasi data atribut |
-| 6 | Accessor | 5 | 5 | Method getter (misal: `denda.getTotalDenda()`, `inputTanggal.isEmpty()`) untuk mengambil nilai atribut |
-| 7 | Encapsulation | 5 | 5 | Semua atribut pada class model menggunakan modifier `private` dan diakses aman via Getter/Setter |
-| 8 | Inheritance | 5 | 5 | Class `BukuFisik.java` dan `EBook.java` menggunakan keyword `extends` ke class induk `Pustaka.java` |
-| 9 | Polymorphism | 10 | 10 | Penerapan polimorfisme saat objek `BukuFisik` dan `EBook` dimasukkan ke array induk via `tambahPustaka(Pustaka pustaka)` |
-| 10 | Seleksi | 5 | 5 | Struktur `switch-case` untuk menu utama dan `if-else` untuk pengecekan jenis pustaka pada Main.java |
-| 11 | Perulangan | 5 | 5 | Menggunakan perulangan `while (berjalan)` pada Main.java agar menu interaktif terus berulang |
-| 12 | IO Sederhana | 10 | 10 | Menggunakan `Scanner sc = new Scanner(System.in)` dan `sc.nextLine()` untuk membaca input dari user |
-| 13 | Array | 15 | 15 | Menggunakan Collection/ArrayList di dalam `Perpustakaan.java` untuk menampung list pustaka, anggota, dan denda |
-| 14 | Error Handling | 15 | 15 | Menggunakan `try-catch` untuk `NumberFormatException` dan menangkap custom exception pada `perpustakaan.exception` |
-| | **TOTAL** | **100** | **100** | |
+Aplikasi ini mengimplementasikan beberapa konsep penting dalam pemrograman berorientasi objek (OOP) seperti Class, Object, Atribut, Method Constructor, Method Mutator, Method Accessor, Encapsulation, Inheritance, Polymorphism, Seleksi, Perulangan, IO Sederhana, Array, dan Error Handling.
 
-## Penjelasan Singkat Penerapan Fitur PBO
-1. **Class & Object:** Berhasil mengimplementasikan class struktural dan class model lalu melakukan instansiasi objeknya pada `Main.java`.
-2. **Encapsulation:** Atribut dilindungi dengan akses `private` dan dimanipulasi dengan aman menggunakan `Getter` (Accessor) serta `Setter` (Mutator).
-3. **Inheritance & Polymorphism:** Class `BukuFisik` dan `EBook` mewarisi sifat class induk `Pustaka`, di mana penambahannya ditangani secara polimorfik oleh satu method kolektif.
-4. **Struktur Kontrol (Seleksi & Perulangan):** Menggunakan `switch-case` dan `if-else` sebagai pengatur logika aplikasi, dibungkus perulangan `while` agar menu terus interaktif.
-5. **Koleksi & Validasi (Array & Error Handling):** Menyimpan data dinamis menggunakan Array/ArrayList di dalam sistem perpustakaan dan mengamankan input dari crash menggunakan struktur `try-catch`.
+## Penjelasan Kode
 
-## Tautan Video Youtube
-[https://youtu.be/z-ftP-kgdio]
+Berikut adalah bagian kode yang relevan dengan konsep OOP yang dijelaskan:
+
+1. **Class** adalah template atau blueprint dari object. Pada kode ini, `Pustaka`, `BukuFisik`, dan `EBook` adalah contoh dari class.
+
+```bash
+public abstract class Pustaka {
+    ...
+}
+
+public class BukuFisik extends Pustaka {
+    ...
+}
+```
+
+2. **Object** adalah instance dari class. Pada kode ini, `new BukuFisik("BK001", "Belajar Java Dasar", ...)` adalah contoh pembuatan object.
+
+```bash
+perpustakaan.tambahPustaka(new BukuFisik("BK001", "Belajar Java Dasar", "Andi Wijaya", 2020, 3, "Rak A1"));
+```
+
+3. **Atribut** adalah variabel yang ada dalam class. Pada kode ini, `judul` dan `pengarang` adalah contoh atribut.
+
+```bash
+private String judul;
+private String pengarang;
+```
+
+4. **Constructor** adalah method yang pertama kali dijalankan pada saat pembuatan object. Pada kode ini, constructor ada di dalam class `Pustaka` dan `BukuFisik`.
+
+```bash
+public Pustaka(String kodePustaka, String judul, String pengarang, int tahunTerbit) {
+    this.kodePustaka = kodePustaka;
+    this.judul = judul;
+    this.pengarang = pengarang;
+    this.tahunTerbit = tahunTerbit;
+}
+
+public BukuFisik(String kodePustaka, String judul, String pengarang, int tahunTerbit, int stok, String lokasiRak) {
+    super(kodePustaka, judul, pengarang, tahunTerbit);
+    this.stok = stok;
+    this.lokasiRak = lokasiRak;
+}
+```
+
+5. **Mutator** atau setter digunakan untuk mengubah nilai dari suatu atribut. Pada kode ini, `setJudul` dan `setPengarang` adalah contoh method mutator.
+
+```bash
+public void setJudul(String judul) {
+    this.judul = judul;
+}
+
+public void setPengarang(String pengarang) {
+    this.pengarang = pengarang;
+}
+```
+
+6. **Accessor** atau getter digunakan untuk mengambil nilai dari suatu atribut. Pada kode ini, `getJudul`, `getPengarang`, `getStok`, dan `getLinkUnduh` adalah contoh method accessor.
+
+```bash
+public String getJudul() {
+    return judul;
+}
+
+public String getPengarang() {
+    return pengarang;
+}
+```
+
+7. **Encapsulation** adalah konsep menyembunyikan data dengan membuat atribut menjadi private dan hanya bisa diakses melalui method. Pada kode ini, atribut `judul` dan `stok` dienkapsulasi dan hanya bisa diakses melalui method getter dan setter.
+
+```bash
+private String judul;
+private int stok;
+```
+
+8. **Inheritance** adalah konsep di mana sebuah class bisa mewarisi property dan method dari class lain. Pada kode ini, `BukuFisik` dan `EBook` mewarisi `Pustaka` dengan sintaks `extends`.
+
+```bash
+public class BukuFisik extends Pustaka {
+    ...
+}
+
+public class EBook extends Pustaka {
+    ...
+}
+```
+
+9. **Polymorphism** adalah konsep di mana sebuah nama method yang sama dapat berperilaku berbeda tergantung pada tipe objek yang mereka manipulasi. Pada kode ini, method `aksesPustaka()` di `Pustaka` bersifat abstrak, lalu di-override berbeda oleh `BukuFisik` dan `EBook`.
+
+```bash
+// di BukuFisik
+@Override
+public String aksesPustaka() {
+    return "Buku fisik dapat dipinjam langsung di lokasi rak: " + lokasiRak;
+}
+
+// di EBook
+@Override
+public String aksesPustaka() {
+    return "E-Book dapat diakses dengan mengunduh dari: " + linkUnduh;
+}
+```
+
+10. **Seleksi** adalah statement kontrol yang digunakan untuk membuat keputusan berdasarkan kondisi. Pada kode ini, digunakan seleksi `if else` dalam constructor `Anggota` dan seleksi `switch` dalam menu utama `Main.java`.
+
+```bash
+public Anggota(String idAnggota, String nama, String jenisAnggota) {
+    ...
+    if (jenisAnggota.equalsIgnoreCase("Dosen")) {
+        this.maksimalPinjam = 5;
+    } else {
+        this.maksimalPinjam = 3;
+    }
+}
+
+switch (pilihan) {
+    case 1:
+        perpustakaan.tampilkanSemuaPustaka();
+        break;
+    case 0:
+        berjalan = false;
+        break;
+}
+```
+
+11. **Perulangan** adalah statement kontrol yang digunakan untuk menjalankan blok kode berulang kali. Pada kode ini, digunakan loop `while` untuk menu utama dan loop `for` untuk menelusuri data array.
+
+```bash
+while (berjalan) {
+    tampilkanMenu();
+    int pilihan = bacaPilihan();
+    ...
+}
+
+for (int i = 0; i < jumlahPustaka; i++) {
+    Pustaka p = daftarPustaka[i];
+    System.out.println((i + 1) + ". " + p);
+}
+```
+
+12. **Input Output Sederhana** digunakan untuk menerima input dari user dan menampilkan output ke user. Pada kode ini, digunakan class `Scanner` untuk menerima input dan method `System.out.println` untuk menampilkan output.
+
+```bash
+Scanner sc = new Scanner(System.in);
+System.out.print("Kode pustaka: ");
+String kode = sc.nextLine().trim();
+
+System.out.println("Peminjaman berhasil dicatat: " + peminjaman);
+```
+
+13. **Array** adalah struktur data yang digunakan untuk menyimpan beberapa nilai dalam satu variabel. Pada kode ini, `Pustaka[] daftarPustaka = new Pustaka[100];` adalah contoh penggunaan array.
+
+```bash
+private Pustaka[] daftarPustaka;
+private Anggota[] daftarAnggota;
+private Peminjaman[] daftarPeminjaman;
+private Denda[] daftarDenda;
+```
+
+14. **Error Handling** digunakan untuk menangani error yang mungkin terjadi saat runtime. Pada kode ini, digunakan `try catch` untuk menangani custom exception.
+
+```bash
+try {
+    Peminjaman peminjaman = perpustakaan.pinjamPustaka(kode, id, LocalDate.now());
+    System.out.println("Peminjaman berhasil dicatat: " + peminjaman);
+} catch (DataTidakDitemukanException | StokTidakCukupException | BatasPinjamException e) {
+    System.out.println("Gagal meminjam: " + e.getMessage());
+}
+```
+
+## Usulan nilai
+
+| No  | Materi         |  Nilai  |
+| :-: | -------------- | :-----: |
+|  1  | Class          |    5    |
+|  2  | Object         |    5    |
+|  3  | Atribut        |    5    |
+|  4  | Constructor    |    5    |
+|  5  | Mutator        |    5    |
+|  6  | Accessor       |    5    |
+|  7  | Encapsulation  |    5    |
+|  8  | Inheritance    |    5    |
+|  9  | Polymorphism   |   10    |
+| 10  | Seleksi        |    5    |
+| 11  | Perulangan     |    5    |
+| 12  | IO Sederhana   |   10    |
+| 13  | Array          |   15    |
+| 14  | Error Handling |   15    |
+|     | **TOTAL**      | **100** |
+
+## Pembuat
+
+Nama: Maria Aulia
+NPM: 2410010491
